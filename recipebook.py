@@ -1,18 +1,13 @@
 '''
-This file includes the 
+
 '''
 import json
 import os
 import argparse
 
-from definitions import Method
+from definitions import Method, Paths
 from enum import Enum
-from recipe import Recipe
-from ingredient import Ingredient
-
-class Paths(Enum):
-    PATH_BACKUP = './data/recipes_backup.json'
-    PATH_STORAGE = './data/recipes.json'
+from recipe import Recipe, Ingredient
 
 class RecipeBook():    
     def __init__(self):
@@ -54,7 +49,12 @@ class RecipeBook():
 
             self.recipies.append(recipe)
         
-
+    '''
+        add(recipe, backup)
+        Params:
+            - recipe: Recipe
+            - backup: boolean
+    '''
     #adds a recipe and if backup is set then backups the current file before doing so
     def add(self, recipe, backup):
         if backup:
@@ -89,19 +89,18 @@ if (__name__ == '__main__'):
     book = RecipeBook()
     book.load()
 
+    #add necessary arguments 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-s', '--search', help='Search for recipies using an ingredient', type=str)
+    parser.add_argument('-s', '--search', help='Search for recipies using an ingredient', type=str, required=True)
 
     args = parser.parse_args()
+    data = book.search('ingredient', args.search)
     
-    if not args.search:
-        print('You must give a searchable ingredient')
+    #show the results, no pretty print
+    #TODO: add pretty print
+    if len(data) == 0:
+        print('No results')
     else:
-        data = book.search('ingredient', args.search)
-        
-        if len(data) == 0:
-            print('No results')
-        else:
-            print(json.dumps(data, indent=4))
+        print(json.dumps(data, indent=4))
 
 

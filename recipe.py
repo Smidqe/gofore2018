@@ -1,6 +1,12 @@
 from enum import Enum
 from definitions import Method
 
+class Ingredient():
+    def __init__(self):
+        self.type = ''
+        self.unit = ''
+        self.amount = 0
+
 class Recipe():
     def __init__(self):
         self.name = ''
