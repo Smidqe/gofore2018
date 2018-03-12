@@ -3,6 +3,7 @@ This file includes the
 '''
 import json
 import os
+import argparse
 
 from definitions import Method
 from enum import Enum
@@ -87,4 +88,20 @@ class RecipeBook():
 if (__name__ == '__main__'):
     book = RecipeBook()
     book.load()
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-s', '--search', help='Search for recipies using an ingredient', type=str)
+
+    args = parser.parse_args()
+    
+    if not args.search:
+        print('You must give a searchable ingredient')
+    else:
+        data = book.search('ingredient', args.search)
+        
+        if len(data) == 0:
+            print('No results')
+        else:
+            print(json.dumps(data, indent=4))
+
 
