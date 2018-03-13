@@ -1,12 +1,5 @@
 from enum import Enum
 
-#Unit constants (could be strings)
-class Units(Enum):
-    UNIT_UNKNOWN = -1
-    UNIT_VOLUME = 0
-    UNIT_MASS = 1
-    UNIT_UNIT = 2
-
 #Method constants
 class Method(Enum):
     METHOD_REMOVE = 0
