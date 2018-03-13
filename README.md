@@ -1,4 +1,4 @@
-This is a very simplistic eRecipe (not for medicine but for delicious cookings) program. 
+This is a very simplistic eRecipe (not for medicine but for delicious cookings) program. Made in Python 3.6.4
 
 Required 3rd party packages (package config not yet present):
 
