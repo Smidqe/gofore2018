@@ -33,6 +33,7 @@ class RecipeBook():
 
         #handle the data here
         for sub in data:
+            #create the recipe object and add instructions and name
             recipe = Recipe()
             recipe.instructions = sub['instructions']
             recipe.name = sub['name']
@@ -41,16 +42,21 @@ class RecipeBook():
             for ingredient in sub['ingredients']:
                 ing = Ingredient()
 
+                #add necessary values
                 ing.type = ingredient['name']
                 ing.amount = ingredient['amount']
                 ing.unit = ingredient['unit']
-
+                
+                #add the ingredient to recipe
                 recipe.add(ing)
 
+            #add the recipe to the list
             self.recipies.append(recipe)
         
     '''
-        add(recipe, backup)
+        Function:
+            add(recipe, backup)
+        
         Params:
             - recipe: Recipe
             - backup: boolean
@@ -74,17 +80,27 @@ class RecipeBook():
         if backup:
             json.dump(self.recipies, self.backup, indent=4)
 
+    #search for various things you might find in the recipies
+    #currently ingredient search is implemented
+    #but it could be easily 
     def search(self, what, value):
         result = []
 
-        for recipe in self.recipies:
+        #check if there is nothing in the recipies
+        if len(self.recipies) == 0:
+            return result
 
-            #check if the value exists in the ingredients in the recipe by utilising
+        #iterate over the list
+        for recipe in self.recipies:
+            #check if the value exists in the ingredients in the recipe by utilising some list magic
+            #also important that we compare the lowercased strings to allow case typos that grandma may have
+            #also when using 'and' we are lazily checking the condition instead of using | which is not lazy
             if what == 'ingredient' and (value.lower() in [ingredient.type.lower() for ingredient in recipe.ingredients]):
                 result.append(recipe.json())
 
         return result
 
+#if we are running this program from console/terminal
 if (__name__ == '__main__'):
     book = RecipeBook()
     book.load()
