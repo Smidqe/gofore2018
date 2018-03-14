@@ -1,4 +1,4 @@
-This is a very simplistic eRecipe (not for medicine but for delicious cookings) program. Made in Python 3.6.4
+This is a very simplistic eRecipe (not for medicine but for delicious cookings) program. Documentation can be found in build/html/ folder
 
 Required 3rd party packages (package config not yet present):
 
@@ -11,3 +11,6 @@ Steps to get it working (in linux):
     2. flask run
     3. Program is now running in port 5000 locally
     (4.) Run request.py in tests/ to test out the functionality
+
+
+Made in Python 3.6.4

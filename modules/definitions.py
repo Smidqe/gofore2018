@@ -7,7 +7,7 @@ class Method(Enum):
     METHOD_INDEX = 2
     METHOD_VALUE = 3
 
-#Path constants
+#Path constants (relative to main file)
 class Paths(Enum):
     PATH_BACKUP = './data/recipes_backup.json'
     PATH_STORAGE = './data/recipes.json'

@@ -1,17 +1,15 @@
-'''
-
-'''
 import json
 import os
 import argparse
 
-from definitions import Method, Paths
-from enum import Enum
-from recipe import Recipe, Ingredient
+from modules.definitions import Paths, Method
+from modules.recipe import Recipe, Ingredient
 
 class RecipeBook():    
     def __init__(self):
         self.recipies = []
+
+        #open the necessary files
         self.file = open(os.path.join(Paths.PATH_STORAGE.value))
         self.backup = open(os.path.join(Paths.PATH_STORAGE.value))
 
@@ -53,14 +51,6 @@ class RecipeBook():
             #add the recipe to the list
             self.recipies.append(recipe)
         
-    '''
-        Function:
-            add(recipe, backup)
-        
-        Params:
-            - recipe: Recipe
-            - backup: boolean
-    '''
     #adds a recipe and if backup is set then backups the current file before doing so
     def add(self, recipe, backup):
         if backup:
@@ -95,7 +85,7 @@ class RecipeBook():
             #check if the value exists in the ingredients in the recipe by utilising some list magic
             #also important that we compare the lowercased strings to allow case typos that grandma may have
             #also when using 'and' we are lazily checking the condition instead of using | which is not lazy
-            if what == 'ingredient' and (value.lower() in [ingredient.type.lower() for ingredient in recipe.ingredients]):
+            if (what == 'ingredient') and (value.lower() in [ingredient.type.lower() for ingredient in recipe.ingredients]):
                 result.append(recipe.json())
 
         return result

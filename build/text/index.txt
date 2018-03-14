@@ -1,0 +1,16 @@
+Welcome to eRecipebook's documentation!
+***************************************
+
+Contents:
+
+* Recipebook
+
+
+Indices and tables
+******************
+
+* Index
+
+* Module Index
+
+* Search Page

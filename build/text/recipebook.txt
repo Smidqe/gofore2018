@@ -1,0 +1,11 @@
+Recipebook
+**********
+
+save()
+Save the contents of the recipebook into a file in json format
+
+load(path=None)
+Load data from a json format into the applications memory, if path is not set it relies on PATH_STORAGE
+
+add(recipe, backup)
+Add a Recipe object to the storage, if backup is set backup the storage file before it is changed
