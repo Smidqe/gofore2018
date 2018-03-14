@@ -11,6 +11,7 @@ Welcome to eRecipebook's documentation!
    :caption: Contents:
 
    recipebook
+   modules/recipe
 
 Indices and tables
 ==================

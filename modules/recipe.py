@@ -35,8 +35,11 @@ class Recipe():
         else:
             self.ingredients.remove(ingredient)
 
-    def modify(self, index, value):
-        self.ingredients[index] = value
+    def modify(self, method, ingredient, value):
+        if method == Method.METHOD_INDEX:
+            self.ingredients[ingredient] = value
+        else:
+            self.ingredients[self.ingredients.index(ingredient)] = value
 
     def json(self):
         #grab the ingredients as a json compatible list
