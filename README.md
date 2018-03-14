@@ -1,4 +1,4 @@
-This is a very simplistic eRecipe (not for medicine but for delicious cookings) program. Documentation can be found in build/html/ folder
+This is a very simplistic eRecipe (not for medicine but for delicious cookings) program. Documentation is made with Sphix and can be found in build/html/ folder
 
 Required 3rd party packages (package config not yet present):
 
