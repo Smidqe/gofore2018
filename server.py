@@ -28,7 +28,3 @@ def search():
 
     #jsonify the response and send it to the requester
     return flask.jsonify(result)
-
-@app.route('/recipes', methods=['GET', 'POST'])
-def recipes():
-    return None
